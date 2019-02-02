@@ -8,7 +8,11 @@
    and recursive methods, up to the nth value as inputted by the user. The program should
    also time both methods and output results so the user can see which is faster.
 
-   Data Dictionary:
+   Data Dictionary (main Method):
+   n : integer variable that will hold the value the user enters to say how many values of the sequence they want
+   fibNum1 : integer variable used to send to the fiboRecSerie method that will hold the starting value
+   fibNum2 : integer variable used to send to the fiboRecSerie method that will hold the second starting value
+
  */
 import java.io.Console;
 import java.util.Scanner;
@@ -26,9 +30,20 @@ public class Main {
             }
             while(n<=0);
         }
+        System.out.println("Recursion:");
         fiboSerieRec(n, fibNum1, fibNum2);
+        System.out.println("\nIteration:");
+        fiboSerieIte(n);
 
     }
+    //Function Name: fiboSerieRec
+    //Function Description: Calculate the fibonacci series recursively based off of the
+    //value inputted by the user.
+    //Data Dictionary:
+    //n : an integer parameter that holds the number of entries in the series we do.
+    //fibNum1: an integer parameter that holds the initial value, and first value to be added.
+    //fibNum2: an integer parameter to hold the second initial value, and the second values added, and the value outputted.
+    //fibHold: an integer variable to temporarily hold the num2 so its never overwritten.
     public static void fiboSerieRec(int n, int fibNum1, int fibNum2){
         int fibHold=fibNum2;
         if (fibNum1==0) {
@@ -42,6 +57,24 @@ public class Main {
             fiboSerieRec(n,fibNum1,fibNum2);
         }
 
+    }
+    //Function Name: fiboSerieIte
+    //Function Description: Calculate the fibonacci series iteratively based off of the
+    //value inputted by the user.
+    //Data Dictionary:
+    //n : an integer parameter that holds the number of entries in the series we do.
+    //fibNum1: an integer variable that holds the initial value, and first value to be added.
+    //fibNum2: an integer variable to hold the second initial value, and the second values added, and the value outputted.
+    //fibHold: an integer variable to temporarily hold the num2 so its never overwritten.
+    public static void fiboSerieIte(int n){
+       int fibNum1=0; int fibNum2=1; int fibHold;
+       System.out.print(fibNum1 + " ");
+        for(int i=n; i>1; i--){
+            System.out.print(fibNum2 + " ");
+            fibHold=fibNum2;
+            fibNum2=fibNum1+fibNum2;
+            fibNum1=fibHold;
+        }
     }
 }
 
